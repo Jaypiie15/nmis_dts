@@ -90,10 +90,10 @@ class UserController extends Controller
 
     public function user_print_document($tracking_number)
     {
-        Storage::disk('local')->put('test.pdf', file_get_contents('storage/DTS.pdf'));
+        Storage::disk('local')->put('test.pdf', file_get_contents('storage/HRM.pdf'));
 
 
-        $outputFile = Storage::disk('local')->path('DTS.pdf');
+        $outputFile = Storage::disk('local')->path('HRM.pdf');
         // fill data
         $this->fillDocument(Storage::disk('local')->path('test.pdf'), $outputFile, $tracking_number);
         //output to browser
