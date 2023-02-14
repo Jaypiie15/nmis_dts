@@ -116,9 +116,10 @@
                             {{-- <button class="btn bg-primary issue_license">Edit Document <i class="icon-pencil ml-2"></i></button> --}}
                             {{-- <button class="btn bg-danger issue_license">Delete Document <i class="icon-trash ml-2"></i></button> --}}
                             <button type="submit" data-toggle="modal" data-target="#modal-login" class="btn btn-success btn-receive">Receive Document <i class="icon-check ml-2"></i></button>
-						@if(strpos(Auth::user()->division_name,'HRM') !== false)
                             <a href="{{ route('user-print-document',['tracking_number' => $document->tracking_number]) }}" class="btn bg-warning">Print Document <i class="icon-printer ml-2"></i></a>
-                        @endif
+						<!-- @if(strpos(Auth::user()->division_name,'HRM') !== false) -->
+                        
+                            <!-- @endif -->
                         </fieldset> 
 					</div>
 

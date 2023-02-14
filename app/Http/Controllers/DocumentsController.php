@@ -221,7 +221,14 @@ class DocumentsController extends Controller
                     'received_by' => ''
         ]);
 
-        Mail::to($request->email_address)->send(new DtsMail($tracking_number));
+        Storage::disk('local')->put('test.pdf', file_get_contents('storage/DTS.pdf'));
+
+
+        $outputFile = Storage::disk('local')->path('DTS.pdf');
+        // fill data
+        $this->fillDocument(Storage::disk('local')->path('test.pdf'), $outputFile, $tracking_number);
+
+        Mail::to($request->email_address)->send(new DtsMail($outputFile));
 
         $url = url('').'/print-document/'.$tracking_number;
         $request->session()->flash('url', $url);

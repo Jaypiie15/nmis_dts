@@ -16,11 +16,11 @@ class DtsMail extends Mailable
      *
      * @return void
      */
-    public $tracking_number;
-    public function __construct($tracking_number)
+    public $url;
+    public function __construct($url)
     {
         //
-        $this->tracking_number = $tracking_number;
+        $this->url = $url;
     }
 
     /**
@@ -30,7 +30,12 @@ class DtsMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.dts')->subject('Document Tracking No.')->with([
-            'tracking_number'=> $this->tracking_number]);
+        return $this->markdown('emails.dts')->subject('NMIS Document Tracking System Notification')
+        ->with([
+            'url'=> $this->url])
+            ->attach($this->url, [
+                'as' => 'dts.pdf',
+                'mime' => 'application/pdf',
+            ]);
     }
 }

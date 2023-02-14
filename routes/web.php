@@ -115,9 +115,9 @@ Route::get('/user-dashboard',[
     'uses' => 'UserController@user_dashboard'
 ]);
 
-Route::get('/add-hrm-dashboard',[
-	'as' => 'add-hrm-document',
-    'uses' => 'UserController@user_hrm_add_document'
+Route::get('/add-user-document',[
+	'as' => 'add-user-document',
+    'uses' => 'UserController@user_add_document'
 ]);
 
 Route::get('/user-print-document/{tracking_number}',[

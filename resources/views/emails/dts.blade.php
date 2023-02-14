@@ -3,9 +3,7 @@
 
 Hello,
 
-Please be informed that your document has been successfully uploaded on DTS Website. To keep track on your document, visit <a>http://dts.nmis.gov.ph </a> and input this Document Tracking No. : <br>
-
-<b>{{ $tracking_number }}</b><br>
+Please be informed that your document has been successfully uploaded on DTS Website. To keep track on your document, please check the attached file to check your Document details and visit <a>http://dts.nmis.gov.ph </a>. <br>
 
 
 Thanks!<br>

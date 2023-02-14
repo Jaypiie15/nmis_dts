@@ -46,7 +46,7 @@
 						@csrf	
                         <fieldset class="mb-3">
 								<legend class="text-uppercase font-size-sm font-weight-bold">Input Document details :</legend>
-
+						@if(strpos(Auth::user()->division_name,'HRM') !== false)
 								<!-- Basic text input -->
 								<div class="form-group row">
 									<label class="col-form-label col-lg-3">Email address of originating : <span class="text-danger">*</span></label>
@@ -83,6 +83,21 @@
 										</select>
 									</div>
 								</div>
+								@endif
+								<input type="hidden" name="email_address" value="{{ auth()->user()->division_email }}">
+								<input type="hidden" name="category_from" value="CO">
+								<input type="hidden" name="from_office" value="{{ auth()->user()->division_name }}">
+								<div class="form-group row">
+									<label class="col-form-label col-lg-3">Document Type : <span class="text-danger">*</span></label>
+									<div class="col-lg-4">
+										<select class="form-control select22" id="document_type" name="document_type" required>
+											<option value="">-- Choose one --</option>
+											<option value="Disbursement Voucher">Disbursement Voucher (DV) </option>
+											<option value="Obligation Request">Obligation Request (OBr) </option>
+											<option value="Purchase Request">Purchase Request (PR)</option>
+										</select>
+									</div>
+								</div>
 
 								<div class="form-group row">
 									<label class="col-form-label col-lg-3">Document Title :  <span class="text-danger">*</span></label>
@@ -91,7 +106,12 @@
 									</div>
 								</div>
 
-
+								<div class="form-group row">
+									<label class="col-form-label col-lg-3">Document remarks (optional) :  </label>
+									<div class="col-lg-4">
+										<input type="text" name="document_remarks" class="form-control" >
+									</div>
+								</div>
      
 
                                 <div class="form-group row">

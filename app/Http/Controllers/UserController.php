@@ -32,7 +32,7 @@ class UserController extends Controller
             ->orWhere('document_type','Leave Accomplishment Form')->orderBy('created_at','DESC')->get();
         }
         else{
-            $documents = Documents::where('from_office',Auth::user()->division_name)->get();
+            $documents = Documents::where('from_office',Auth::user()->division_name)->orderBy('created_at','DESC')->get();
         }
 
         return view('users.show-documents',compact('documents'));
@@ -51,9 +51,9 @@ class UserController extends Controller
         return view('users.user-dashboard');
     }
 
-    public function user_hrm_add_document()
+    public function user_add_document()
     {
-        return view('users.add-hrm-document');
+        return view('users.add-user-document');
     }
 
     public function user_store_document(Request $request)
@@ -81,7 +81,14 @@ class UserController extends Controller
                     'received_by' => ''
         ]);
 
-        Mail::to($request->email_address)->send(new DtsMail($tracking_number));
+        Storage::disk('local')->put('test.pdf', file_get_contents('storage/DTS_User.pdf'));
+
+
+        $outputFile = Storage::disk('local')->path('DTS_User.pdf');
+        // fill data
+        $this->fillDocument(Storage::disk('local')->path('test.pdf'), $outputFile, $tracking_number);
+
+        Mail::to($request->email_address)->send(new DtsMail($outputFile));
 
         $url = url('').'/user-print-document/'.$tracking_number;
         $request->session()->flash('url', $url);
@@ -90,10 +97,10 @@ class UserController extends Controller
 
     public function user_print_document($tracking_number)
     {
-        Storage::disk('local')->put('test.pdf', file_get_contents('storage/HRM.pdf'));
+        Storage::disk('local')->put('test.pdf', file_get_contents('storage/DTS_User.pdf'));
 
 
-        $outputFile = Storage::disk('local')->path('HRM.pdf');
+        $outputFile = Storage::disk('local')->path('DTS_User.pdf');
         // fill data
         $this->fillDocument(Storage::disk('local')->path('test.pdf'), $outputFile, $tracking_number);
         //output to browser
