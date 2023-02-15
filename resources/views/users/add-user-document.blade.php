@@ -83,7 +83,16 @@
 										</select>
 									</div>
 								</div>
-								@endif
+
+								<div class="form-group row">
+									<label class="col-form-label col-lg-3">Document Title :  <span class="text-danger">*</span></label>
+									<div class="col-lg-4">
+										<input type="text" name="document_title" class="form-control" required >
+									</div>
+								</div>
+
+								@else
+								
 								<input type="hidden" name="email_address" value="{{ auth()->user()->division_email }}">
 								<input type="hidden" name="category_from" value="CO">
 								<input type="hidden" name="from_office" value="{{ auth()->user()->division_name }}">
@@ -112,7 +121,7 @@
 										<input type="text" name="document_remarks" class="form-control" >
 									</div>
 								</div>
-     
+								@endif
 
                                 <div class="form-group row">
 									<label class="col-form-label col-lg-3"> <span class="text-danger"></span></label>
