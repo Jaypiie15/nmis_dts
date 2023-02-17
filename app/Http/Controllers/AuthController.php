@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Documents;
 use App\Models\Tracking;
+use Carbon\Carbon;
 
 
 
@@ -76,9 +77,10 @@ class AuthController extends Controller
 
     public function receive_document(Request $request)
     {
+        
         $tracking = Tracking::create([
                     'tracking_number' => $request->tracking_number,
-                    'document_remarks' => 'The document has reached the '.$request->division_name.' Office and has been received by '.$request->received_by,
+                    'document_remarks' => 'The document has reached the '.$request->division_name.' Office and has been received by '.$request->received_by.'. Remarks : '.$request->remarks,
                     'received_by' => $request->received_by
 
         ]);

@@ -206,9 +206,19 @@ class DocumentsController extends Controller
             'document_title' => 'required'
         ]);
 
-        $query = (int) Documents::whereDay('created_at', now()->day)->count() +1;
+        if($data['document_type'] == 'Disbursement Voucher' )
+        {
+            $query = (int) Documents::where('document_type','Disbursement Voucher')
+            ->whereYear('created_at', now()->year)->count() +1;
 
-        $tracking_number = 'NMIS-'.Carbon::now()->format('ymd').'-'.sprintf("%02d",$query);
+            $tracking_number = 'NMISDV-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$query);
+        }
+        else {
+            $query = (int) Documents::whereDay('created_at', now()->day)->count() +1;
+
+            $tracking_number = 'NMIS-'.Carbon::now()->format('ymd').'-'.sprintf("%02d",$query);
+        }
+
 
         $data['tracking_number'] = $tracking_number;
         $data['document_remarks'] = empty($request->document_remarks) ? 'N/A' : $request->document_remarks;

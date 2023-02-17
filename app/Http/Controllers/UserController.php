@@ -31,6 +31,10 @@ class UserController extends Controller
             $documents = Documents::where('document_type','Travel Order')
             ->orWhere('document_type','Leave Accomplishment Form')->orderBy('created_at','DESC')->get();
         }
+        else if(Auth::user()->division_name == 'PROPERTY'){
+            $documents = Documents::where('document_type','Purchase Request')
+            ->orWhere('document_type','Purchase Order')->orderBy('created_at','DESC')->get();
+        }
         else{
             $documents = Documents::where('from_office',Auth::user()->division_name)->orderBy('created_at','DESC')->get();
         }
@@ -60,18 +64,52 @@ class UserController extends Controller
     {
         $data = $request->validate([
             'email_address' => 'required',
-            'category_from' => 'required',
+            // 'category_from' => 'required',
             'from_office' => 'required',
             'document_type' => 'required',
             'document_title' => 'required'
         ]);
 
-        $query = (int) Documents::whereDay('created_at', now()->day)->count() +1;
+        if(strpos($data['from_office'],'RTOC') !== false)
+        {
+            $category = 'RTOC';
+        }
+        else{
+            $category = 'CO';
+        }
 
-        $tracking_number = 'NMIS-'.Carbon::now()->format('ymd').'-'.sprintf("%02d",$query);
+        if(Auth::user()->division_name == 'PROPERTY')
+        {   
 
+            if($data['document_type'] == 'Purchase Request' )
+            {
+                $query = (int) Documents::where('document_type','Purchase Request')
+                ->orWhere('document_type','Purchase Order')
+                ->whereYear('created_at', now()->year)->count() +1;
+    
+                $tracking_number = 'NMISPR-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$query);
+            }
+            else {
+                $query = (int) Documents::where('document_type','Purchase Order')
+                ->whereYear('created_at', now()->year)->count() +1;
+    
+                $tracking_number = 'NMISPO-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$query);
+            }
+
+        }
+        else{
+            
+            $query = (int) Documents::where('document_type','Travel Order')
+            // ->orWhere('document_type','Purchase Order')
+            ->whereYear('created_at', now()->year)->count() +1;
+
+            $tracking_number = 'NMISTO-'.Carbon::now()->format('Y-m').'-'.sprintf("%04d",$query);
+        }
+
+
+        $data['category_from'] = $category;
         $data['tracking_number'] = $tracking_number;
-        $data['document_remarks'] =  'N/A';
+        $data['document_remarks'] = empty($request->document_remarks) ? 'N/A' : $request->document_remarks;
 
         $document = Documents::create($data);
 
