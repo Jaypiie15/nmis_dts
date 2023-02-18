@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Documents;
 use App\Models\Tracking;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
 
@@ -20,6 +22,11 @@ class AuthController extends Controller
     public function trackdocument()
     {
         return view('auth.trackdocument');
+    }
+
+    public function user_update_information()
+    {
+        return view('auth.update-information');
     }
 
     public function track_document($tracking_number)
@@ -42,6 +49,14 @@ class AuthController extends Controller
            $request->session()->regenerate();
             
             // dd(Auth::user()->division_name);
+            if(Auth::user()->division_email == 'sample@mail.com')
+            {
+                return redirect('/user-update-information');
+            }
+
+
+            else{ 
+
             if(Auth::user()->division_name == 'RECORDS'){
                 if(!empty($request->tracking_number))
                 {
@@ -62,6 +77,8 @@ class AuthController extends Controller
                 return redirect('/user-show-documents');
 
             }
+        }
+            
         }
 
         $request->session()->flash('type', 'error');
@@ -107,6 +124,31 @@ class AuthController extends Controller
         else{
             return redirect('/track-document'.'/'.$request->tracking_number);
         }
+    }
+
+    public function update_information(Request $request)
+    {
+        $data = $request->validate([
+            'division_email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $user = User::where('division_name',Auth::user()->division_name)->first();
+        
+        $user->update([
+            'division_email' => $data['division_email'],
+            'password' => Hash::make($request->password)
+        ]);
+
+
+        if(Auth::user()->division_name == 'RECORDS')
+        {
+            return redirect('/records-dashboard');
+        }
+        else{
+            return redirect('/user-show-documents');
+        }
+
     }
 
     public function logout()

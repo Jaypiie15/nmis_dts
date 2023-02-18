@@ -208,10 +208,15 @@ class DocumentsController extends Controller
 
         if($data['document_type'] == 'Disbursement Voucher' )
         {
-            $query = (int) Documents::where('document_type','Disbursement Voucher')
-            ->whereYear('created_at', now()->year)->count() +1;
+            // $query = (int) Documents::where('document_type','Disbursement Voucher')
+            // ->whereYear('created_at', now()->year)->count() +1;
 
-            $tracking_number = 'NMISDV-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$query);
+            $query = Documents::where('document_type','Disbursement Voucher')
+            ->latest()->first();
+
+            $count = substr($query['tracking_number'],-4)+1;
+
+            $tracking_number = 'NMISDV-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$count);
         }
         else {
             $query = (int) Documents::whereDay('created_at', now()->day)->count() +1;

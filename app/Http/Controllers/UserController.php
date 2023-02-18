@@ -83,27 +83,39 @@ class UserController extends Controller
 
             if($data['document_type'] == 'Purchase Request' )
             {
-                $query = (int) Documents::where('document_type','Purchase Request')
-                ->orWhere('document_type','Purchase Order')
-                ->whereYear('created_at', now()->year)->count() +1;
-    
-                $tracking_number = 'NMISPR-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$query);
+                // $query = (int) Documents::where('document_type','Purchase Request')
+                // ->orWhere('document_type','Purchase Order')
+                // ->whereYear('created_at', now()->year)->count() +1;
+                $query = Documents::where('document_type','Purchase Request')
+                ->latest()->first();
+
+                $count = substr($query['tracking_number'],-4)+1;
+
+                $tracking_number = 'NMISPR-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$count);
             }
             else {
-                $query = (int) Documents::where('document_type','Purchase Order')
-                ->whereYear('created_at', now()->year)->count() +1;
-    
-                $tracking_number = 'NMISPO-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$query);
+                // $query = (int) Documents::where('document_type','Purchase Order')
+                // ->whereYear('created_at', now()->year)->count() +1;
+                $query = Documents::where('document_type','Purchase Order')
+                ->latest()->first();
+
+                $count = substr($query['tracking_number'],-4)+1;
+
+                $tracking_number = 'NMISPO-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$count);
             }
 
         }
         else{
             
-            $query = (int) Documents::where('document_type','Travel Order')
-            // ->orWhere('document_type','Purchase Order')
-            ->whereYear('created_at', now()->year)->count() +1;
+            // $query = (int) Documents::where('document_type','Travel Order')
+            // // ->orWhere('document_type','Purchase Order')
+            // ->whereYear('created_at', now()->year)->count() +1;
+            $query = Documents::where('document_type','Travel Order')
+            ->latest()->first();
 
-            $tracking_number = 'NMISTO-'.Carbon::now()->format('Y-m').'-'.sprintf("%04d",$query);
+            $count = substr($query['tracking_number'],-4)+1;
+
+            $tracking_number = 'NMISTO-'.Carbon::now()->format('Y-m').'-'.sprintf("%04d",$count);
         }
 
 

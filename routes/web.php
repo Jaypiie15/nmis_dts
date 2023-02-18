@@ -38,6 +38,10 @@ Route::get('/trackdocument',[
     'uses' => 'AuthController@trackdocument'
 ]);
 
+Route::get('/user-update-information',[
+	'as' => 'user-update-information',
+    'uses' => 'AuthController@user_update_information'
+]);
 
 Route::get('/add-user',[
 	'as' => 'add-user',
@@ -164,6 +168,11 @@ Route::post('/p/delete-document',[
 Route::post('/p/receive-document',[
     'as' => 'receive-document',
     'uses' => 'AuthController@receive_document'
+]);
+
+Route::post('/p/update-info',[
+    'as' => 'update-info',
+    'uses' => 'AuthController@update_information'
 ]);
 
 Route::post('/p/user-store-document',[
