@@ -30,7 +30,7 @@ class DtsMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.dts')->subject('NMIS Document Tracking System Notification')
+        return $this->markdown('emails.dts')->subject('NMIS Document Tracking System Notification for the Document '.request()->document_title)
         ->with([
             'url'=> $this->url])
             ->attach($this->url, [
