@@ -113,7 +113,8 @@ class UserController extends Controller
             $query = Documents::where('document_type','Travel Order')
             ->latest()->first();
 
-            $count = substr($query['tracking_number'],-4)+1;
+            $counts = substr($query['tracking_number'],-4)+1;
+            $count = $counts+1;
 
             $tracking_number = 'NMISTO-'.Carbon::now()->format('Y-m').'-'.sprintf("%04d",$count);
         }
