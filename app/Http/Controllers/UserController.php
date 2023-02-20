@@ -99,9 +99,9 @@ class UserController extends Controller
                 $query = Documents::where('document_type','Purchase Order')
                 ->latest()->first();
 
-                $count = substr($query['tracking_number'],-4)+1;
+                $count = substr($query['tracking_number'],-3)+1;
 
-                $tracking_number = 'NMISPO-'.Carbon::now()->format('y-m').'-'.sprintf("%04d",$count);
+                $tracking_number = 'NMISPO-'.sprintf("%03d",$count).'-'.Carbon::now()->format('m-y');
             }
 
         }
@@ -113,8 +113,7 @@ class UserController extends Controller
             $query = Documents::where('document_type','Travel Order')
             ->latest()->first();
 
-            $counts = substr($query['tracking_number'],-4)+1;
-            $count = $counts+1;
+            $count = substr($query['tracking_number'],-4)+1;
 
             $tracking_number = 'NMISTO-'.Carbon::now()->format('Y-m').'-'.sprintf("%04d",$count);
         }
