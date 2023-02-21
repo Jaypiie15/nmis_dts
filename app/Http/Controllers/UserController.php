@@ -78,7 +78,7 @@ class UserController extends Controller
             $category = 'CO';
         }
 
-        if(Auth::user()->division_name == 'PROPERTY')
+        if(Auth::user()->division_name == 'PROPERTY' || Auth::user()->division_name == 'PIMD-IT')
         {   
 
             if($data['document_type'] == 'Purchase Request' )

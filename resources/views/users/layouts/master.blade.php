@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						{{-- <li class="nav-item"><a href="{{ route('user-dashboard') }}" class="nav-link"><i class="icon-home4"></i> <span>Dashboard</span></a></li> --}}
 						
 						<li class="nav-item"><a href="{{ route('user-show-documents') }}" class="nav-link"><i class="icon-files-empty"></i> <span>Manage My Documents</span></a></li>
-						@if(Auth::user()->division_name == 'HRM' || Auth::user()->division_name == 'PROPERTY' || || Auth::user()->division_name == 'PIMD-IT')
+						@if(Auth::user()->division_name == 'HRM' || Auth::user()->division_name == 'PROPERTY' || Auth::user()->division_name == 'PIMD-IT')
 						
 						<li class="nav-item"><a href="{{ route('add-user-document') }}" class="nav-link"><i class="icon-file-plus"></i> <span>Add Document </span></a></li>
 
