@@ -99,8 +99,7 @@ class UserController extends Controller
                 $query = Documents::where('document_type','Purchase Order')
                 ->latest()->first();
 
-                $count = substr($query['tracking_number'],8,10)+1;
-
+                $count = substr($query['tracking_number'],7,-6)+1;
                 $tracking_number = 'NMISPO-'.sprintf("%03d",$count).'-'.Carbon::now()->format('m-y');
             }
 
