@@ -125,8 +125,8 @@
 									<div class="col-lg-4">
 										<select class="form-control select22" id="document_type" name="document_type" required>
 											<option value="">-- Choose one --</option>
-											<option value="Disbursement Voucher">Disbursement Voucher (DV) </option>
-											<option value="Obligation Request">Obligation Request (OBr) </option>
+											<!-- <option value="Disbursement Voucher">Disbursement Voucher (DV) </option>
+											<option value="Obligation Request">Obligation Request (OBr) </option> -->
 											<option value="Purchase Order">Purchase Order (PO)</option>
 											<option value="Purchase Request">Purchase Request (PR)</option>
 										</select>
