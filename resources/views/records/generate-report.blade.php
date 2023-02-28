@@ -100,8 +100,11 @@
 											<option value="Memorandum">Memorandum</option>
 											<option value="Notice of Meeting">Notice of Meeting</option>
 											<option value="Project Brief">Project Brief</option>
+											<option value="Purchase Order">Purchase Order</option>
 											<option value="Purchase Request">Purchase Request</option>
 											<option value="Reports">Reports</option>
+											<option value="Travel Order">Travel Order</option>
+
                                     </select>
                                     <div class="form-control-feedback">
                                     </div>

@@ -155,8 +155,8 @@ class DocumentsController extends Controller
                         return $query->whereIn('document_type',$document_type);
                      })
                      ->orderBy('created_at','ASC')->get();
-
-    //    $documents = Documents::all();
+                     
+            //    $documents = Documents::all();
         
         
 
@@ -325,11 +325,12 @@ class DocumentsController extends Controller
         $fpdi->SetXY(76, 127);
         $fpdi->Write(1,Carbon::parse($document->created_at)->format('F d,Y H:ia'));
 
-        $fpdi->SetXY(76, 137);
-        $fpdi->Write(1,$document->document_remarks);
+        $fpdi->SetXY(76, 135);
+        $value = iconv('UTF-8', 'ASCII//TRANSLIT', $document->document_remarks);
+        $fpdi->MultiCell(60,3,$value,0);
 
         $fpdi->SetFont("Arial", "B", 10);
-        $fpdi->SetXY(144, 142);
+        $fpdi->SetXY(140, 142);
         $fpdi->Write(1,$tracking_number);
 
         $fpdi->SetFont("Arial", "", 10);
