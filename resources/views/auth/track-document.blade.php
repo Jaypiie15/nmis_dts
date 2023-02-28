@@ -68,7 +68,7 @@
 										<span class="d-block text-muted">NMIS Document Tracking System</span>
 									</div>
 
-									<button type="submit" data-toggle="modal" data-target="#modal-login" class="btn btn-success btn-receive">Receive Document <i class="icon-check ml-2"></i></button>
+									<button type="submit" data-toggle="modal" id="btn-receive" data-target="#modal-login" class="btn btn-success btn-receive">Receive Document <i class="icon-check ml-2"></i></button>
 									<a href="{{ route('trackdocument') }}" class="btn btn-primary ">Track Another Document <i class="icon-search4 ml-2"></i></a>
 
 
@@ -154,6 +154,12 @@
 		<!-- /main content -->
 
 	</div>
+				@if($errors->has('login_receive'))
+                <script>
+					window.onload = function () {
+					document.getElementById("btn-receive").click(); };
+				</script>
+				@endif
 
                 @if($errors->has('check'))
                 <script>

@@ -60,7 +60,8 @@ class AuthController extends Controller
             if(Auth::user()->division_name == 'RECORDS'){
                 if(!empty($request->tracking_number))
                 {
-                    return redirect('/track-document'.'/'.$request->tracking_number);
+                    // return redirect('/track-document'.'/'.$request->tracking_number);
+                    return back()->withErrors(['login_receive' => 'Success']);
                     $request->session()->flash('type', 'login');
 
                 }
@@ -70,7 +71,8 @@ class AuthController extends Controller
             {
                 if(!empty($request->tracking_number))
                 {
-                    return redirect('/track-document'.'/'.$request->tracking_number);
+                    // return redirect('/track-document'.'/'.$request->tracking_number);
+                    return back()->withErrors(['login_receive' => 'Success']);
                     $request->session()->flash('type', 'login');
 
                 }
