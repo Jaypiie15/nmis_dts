@@ -69,6 +69,7 @@
 									</div>
 
 									<button type="submit" data-toggle="modal" data-target="#modal-login" class="btn btn-success btn-receive">Receive Document <i class="icon-check ml-2"></i></button>
+									<a href="{{ route('trackdocument') }}" class="btn btn-primary ">Track Another Document <i class="icon-search4 ml-2"></i></a>
 
 
                                     <h5 class="mb-0">Document Title</h5>
