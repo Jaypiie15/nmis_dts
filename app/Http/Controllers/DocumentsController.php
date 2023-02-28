@@ -200,11 +200,25 @@ class DocumentsController extends Controller
     {
         $data = $request->validate([
             'email_address' => 'required',
-            'category_from' => 'required',
+            // 'category_from' => 'required',
             'from_office' => 'required',
             'document_type' => 'required',
             'document_title' => 'required'
         ]);
+
+        if(strpos($data['from_office'],'RTOC') !== false)
+        {
+            $category = 'RTOC';
+            $from_office = $request->from_office;
+        }
+        elseif($data['from_office'] == 'External'){
+            $category = 'External';
+            $from_office = $request->external_document;
+        }
+        else{
+            $category = 'CO';
+            $from_office = $request->from_office;
+        }
 
         if($data['document_type'] == 'Disbursement Voucher' )
         {
@@ -224,7 +238,8 @@ class DocumentsController extends Controller
             $tracking_number = 'NMIS-'.Carbon::now()->format('ymd').'-'.sprintf("%02d",$query);
         }
 
-
+        $data['category_from'] = $category;
+        $data['from_office'] = $from_office;
         $data['tracking_number'] = $tracking_number;
         $data['document_remarks'] = empty($request->document_remarks) ? 'N/A' : $request->document_remarks;
 

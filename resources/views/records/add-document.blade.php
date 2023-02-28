@@ -55,7 +55,7 @@
 									</div>
 								</div>
 
-								<div class="form-group row">
+								<!-- <div class="form-group row">
 									<label class="col-form-label col-lg-3">Document Origin :  <span class="text-danger">*</span></label>
 									<div class="col-lg-4">
 										<select class="form-control select22" id="category_from" name="category_from" required>
@@ -65,12 +65,55 @@
 											<option value="External">External</option>
 										</select>
 									</div>
-								</div>
+								</div> -->
 
                                 <div class="form-group row from_office">
 									<label class="col-form-label col-lg-3">From (Office) :  <span class="text-danger">*</span></label>
 									<div class="col-lg-4">
-										<input type="text" name="from_office" class="form-control" required >
+									<select class="form-control select22" id="from_office" name="from_office" required>
+											<option value="">-- Choose one --</option>
+											<option value="ACCOUNTING">ACCOUNTING</option>
+											<option value="ADMIN">ADMIN</option>
+											<option value="ARD">ARD</option>
+											<option value="BUDGET">BUDGET</option>
+											<option value="CASHIER">CASHIER</option>
+											<option value="ENGINEERING">ENGINEERING</option>
+											<option value="External">EXTERNAL</option>
+											<option value="HRD">HRD</option>
+											<option value="HRM">HRM</option>
+											<option value="MIED">MIED</option>
+											<option value="MSDCPD">MSDCPD</option>
+											<option value="OED">OED</option>
+											<option value="ODED">ODED</option>
+											<option value="PIMD">PIMD</option>
+											<option value="PIMD-IT">PIMD-IT</option>
+											<option value="PROPERTY">PROPERTY</option>
+											<option value="POSMD">POSMD</option>
+											<option value="RECORDS">RECORDS</option>
+											<option value="RTOC CAR">RTOC CAR</option>
+											<option value="RTOC NCR">RTOC NCR</option>
+											<option value="RTOC 1">RTOC 1</option>
+											<option value="RTOC 2">RTOC 2</option>
+											<option value="RTOC 3">RTOC 3</option>
+											<option value="RTOC 4A">RTOC 4A</option>
+											<option value="RTOC 4B">RTOC 4B</option>
+											<option value="RTOC 5">RTOC 5</option>
+											<option value="RTOC 6">RTOC 6</option>
+											<option value="RTOC 7">RTOC 7</option>
+											<option value="RTOC 8">RTOC 8</option>
+											<option value="RTOC 9">RTOC 9</option>
+											<option value="RTOC 10">RTOC 10</option>
+											<option value="RTOC 11">RTOC 11</option>
+											<option value="RTOC 12">RTOC 12</option>
+											<option value="RTOC CARAGA">RTOC CARAGA</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row external_document">
+									<label class="col-form-label col-lg-3">Input External Agency/Company Name :  <span class="text-danger">*</span></label>
+									<div class="col-lg-4">
+										<input type="text" name="external_document" class="form-control" >
 									</div>
 								</div>
 
@@ -154,17 +197,18 @@
 $(function(){
     $('.select22').select2();
 
-	$('.from_office').hide()
+	$('.external_document').hide()
 
-	$('#category_from').change(function(){
-		if($(this).val() == '')
+	$('#from_office').change(function(){
+		if($(this).val() == 'External')
 		{
-			$('.from_office').hide()
+			$('.external_document').show()
 		}
 		else{
-			$('.from_office').show()
+			$('.external_document').hide()
 		}
 	})
+
 })
 </script>
 
