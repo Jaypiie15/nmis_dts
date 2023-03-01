@@ -81,6 +81,7 @@
 											<option value="External">EXTERNAL</option>
 											<option value="HRD">HRD</option>
 											<option value="HRM">HRM</option>
+											<option value="LABORATORY">LABORATORY</option>
 											<option value="MIED">MIED</option>
 											<option value="MSDCPD">MSDCPD</option>
 											<option value="OED">OED</option>

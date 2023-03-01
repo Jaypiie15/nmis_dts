@@ -143,6 +143,14 @@
                                             <i class="icon-user text-muted"></i>
                                         </div>
                                     </div>
+
+                                    <div class="form-group form-group-feedback form-group-feedback-left">
+                                        <input type="text" class="form-control" name="remarks" placeholder="Remarks">
+                                        <div class="form-control-feedback">
+                                        <i class="icon-pencil text-muted"></i>
+                                        </div>
+                                    </div>
+                                    
                                     <input type="hidden" name="division_name" value="{{ Auth::user()->division_name }}">
                                     <input type="hidden" name="tracking_number" value="{{ $document->tracking_number }}">
                                     <div class="form-group">
