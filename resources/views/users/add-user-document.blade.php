@@ -80,6 +80,7 @@
 											<option value="HRM">HRM</option>
 											<option value="LABORATORY">LABORATORY</option>
 											<option value="MIED">MIED</option>
+											<option value="MOTORPOOL">MOTORPOOL</option>
 											<option value="MSDCPD">MSDCPD</option>
 											<option value="OED">OED</option>
 											<option value="ODED">ODED</option>
