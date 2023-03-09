@@ -75,6 +75,7 @@
 											<option value="ACCOUNTING">ACCOUNTING</option>
 											<option value="ADMIN">ADMIN</option>
 											<option value="ARD">ARD</option>
+											<option value="BAC">BAC</option>
 											<option value="BUDGET">BUDGET</option>
 											<option value="CASHIER">CASHIER</option>
 											<option value="ENGINEERING">ENGINEERING</option>
