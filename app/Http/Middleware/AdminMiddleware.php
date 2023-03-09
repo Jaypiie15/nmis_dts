@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
 
-        if(auth()->guest() || auth()->user()->division_name != 'RECORDS' ){
+        if(auth()->guest() || auth()->user()->user_role != 'Administrator' ){
             return redirect()->back();
         }
 

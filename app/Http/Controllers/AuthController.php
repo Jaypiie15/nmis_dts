@@ -57,7 +57,7 @@ class AuthController extends Controller
 
             else{ 
 
-            if(Auth::user()->division_name == 'RECORDS'){
+            if(Auth::user()->user_role == 'Administrator'){
                 if(!empty($request->tracking_number))
                 {
                     // return redirect('/track-document'.'/'.$request->tracking_number);
@@ -143,7 +143,7 @@ class AuthController extends Controller
         ]);
 
 
-        if(Auth::user()->division_name == 'RECORDS')
+        if(Auth::user()->user_role == 'Administrator')
         {
             return redirect('/records-dashboard');
         }
