@@ -80,6 +80,7 @@
 											<option value="CASHIER">CASHIER</option>
 											<option value="COA">COA</option>
 											<option value="ENGINEERING">ENGINEERING</option>
+											<option value="External">EXTERNAL</option>
 											<option value="FMO">FMO</option>
 											<option value="HRD">HRD</option>
 											<option value="HRM">HRM</option>
