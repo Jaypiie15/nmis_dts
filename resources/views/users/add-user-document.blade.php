@@ -110,7 +110,7 @@
 									</div>
 								</div>
 
-							@if(strpos(Auth::user()->division_name,'HRM') !== false)
+							@if(strpos(Auth::user()->division_name,'ADMIN') !== false)
 
                                 <div class="form-group row">
 									<label class="col-form-label col-lg-3">Document Type : <span class="text-danger">*</span></label>
