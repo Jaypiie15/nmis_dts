@@ -101,6 +101,7 @@
 											<option value="POSMD">POSMD</option>
 											<option value="QMS">QMS</option>
 											<option value="RECORDS">RECORDS</option>
+											<option value="SCO">SCO</option>
 											<option value="RTOC CAR">RTOC CAR</option>
 											<option value="RTOC NCR">RTOC NCR</option>
 											<option value="RTOC 1">RTOC 1</option>
