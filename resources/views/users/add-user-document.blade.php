@@ -76,7 +76,9 @@
 											<option value="BAC">BAC</option>
 											<option value="BUDGET">BUDGET</option>
 											<option value="CASHIER">CASHIER</option>
+											<option value="COA">COA</option>
 											<option value="ENGINEERING">ENGINEERING</option>
+											<option value="FMO">FMO</option>
 											<option value="HRD">HRD</option>
 											<option value="HRM">HRM</option>
 											<option value="LABORATORY">LABORATORY</option>
@@ -87,8 +89,10 @@
 											<option value="ODED">ODED</option>
 											<option value="PIMD">PIMD</option>
 											<option value="PIMD-IT">PIMD-IT</option>
+											<option value="PMO">PMO</option>
 											<option value="PROPERTY">PROPERTY</option>
 											<option value="POSMD">POSMD</option>
+											<option value="QMS">QMS</option>
 											<option value="RECORDS">RECORDS</option>
 											<option value="RTOC CAR">RTOC CAR</option>
 											<option value="RTOC NCR">RTOC NCR</option>
