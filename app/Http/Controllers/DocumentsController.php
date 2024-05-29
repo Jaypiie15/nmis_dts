@@ -242,7 +242,7 @@ class DocumentsController extends Controller
         $data['from_office'] = $from_office;
         $data['tracking_number'] = $tracking_number;
         $data['document_remarks'] = empty($request->document_remarks) ? 'N/A' : $request->document_remarks;
-
+        
         $document = Documents::create($data);
 
         $tracking = Tracking::create([
@@ -258,7 +258,11 @@ class DocumentsController extends Controller
         // fill data
         $this->fillDocument(Storage::disk('local')->path('test.pdf'), $outputFile, $tracking_number);
 
+        $notify_user = $request->notify_user;
+
+        if($notify_user){
         Mail::to($request->email_address)->send(new DtsMail($outputFile));
+        }
 
         $url = url('').'/print-document/'.$tracking_number;
         $request->session()->flash('url', $url);

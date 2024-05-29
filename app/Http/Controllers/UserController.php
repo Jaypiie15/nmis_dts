@@ -137,8 +137,12 @@ class UserController extends Controller
         // fill data
         $this->fillDocument(Storage::disk('local')->path('test.pdf'), $outputFile, $tracking_number);
 
-        Mail::to($request->email_address)->send(new DtsMail($outputFile));
+        $notify_user = $request->notify_user;
 
+        if($notify_user){
+        Mail::to($request->email_address)->send(new DtsMail($outputFile));
+        }
+        
         $url = url('').'/user-print-document/'.$tracking_number;
         $request->session()->flash('url', $url);
         return redirect('/user-show-documents');

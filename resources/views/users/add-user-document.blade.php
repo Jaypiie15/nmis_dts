@@ -49,9 +49,13 @@
 								<!-- Basic text input -->
 								<div class="form-group row">
 									<label class="col-form-label col-lg-3">Email address of originating : <span class="text-danger">*</span></label>
-									<div class="col-lg-4">
+									<div class="col-lg-3">
 										<input type="text" name="email_address" class="form-control" required >
 									</div>
+									<div class="col-lg-4">
+										<label class="col-form-label col-lg-3"> Notify User? </label>
+										<input type="checkbox" name="notify_user" checked > 
+								</div>
 								</div>
 
 								<!-- <div class="form-group row">
@@ -122,10 +126,11 @@
 										<select class="form-control select22" id="document_type" name="document_type" required>
 											<option value="">-- Choose one --</option>
 											<option value="Travel Order">Travel Order</option>
-											<option value="Leave Accomplishment Form">Leave Accomplishment Form</option>
+											<!-- <option value="Leave Accomplishment Form">Leave Accomplishment Form</option> -->
 										</select>
 									</div>
 								</div>
+								
 							@else
 								<div class="form-group row">
 									<label class="col-form-label col-lg-3">Document Type : <span class="text-danger">*</span></label>
