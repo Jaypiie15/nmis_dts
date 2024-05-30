@@ -27,7 +27,7 @@ class UserController extends Controller
         if(Auth::user()->division_name == 'OED'){
             $documents = Documents::orderBy('created_at','DESC')->get();
         }
-        else if(Auth::user()->division_name == 'HRM'){
+        else if(Auth::user()->division_name == 'ADMIN'){
             $documents = Documents::where('document_type','Travel Order')
             ->orWhere('document_type','Leave Accomplishment Form')->orderBy('created_at','DESC')->get();
         }
